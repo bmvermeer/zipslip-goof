@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>Demo app</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<nav class="nav">
+    <a class="nav-link" href="/">Home</a>
+    <a class="nav-link" href="/message">Message</a>
+    <a class="nav-link" href="/upload">Files</a>
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-link" href="/logout">Log out</a>
+</nav>
+
+<h1>Login</h1>
+<form action="#" th:action="@{/login}" th:object="${user}" method="post">
+    <p>Username: <input type="text" th:field="*{username}" /></p>
+    <p>password: <input type="password" th:field="*{password}" /></p>
+    <p><input type="submit" class="btn btn-primary" value="Submit" /> <input type="reset" class="btn btn-primary" value="Reset" /></p>
+</form>
+
+<p>No account yet? please register <a href="register"> here</a></p>
+
+
+</body>
+</html>
