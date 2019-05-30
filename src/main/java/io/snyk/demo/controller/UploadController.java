@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class UploadController {
 
     private static final String UPLOADED_FOLDER = "";
-    private static final File publicDir = new File("public/upload");
+    public static final File publicDir = new File("public/upload");
 
     @GetMapping("/upload")
     public String index(Model model) {

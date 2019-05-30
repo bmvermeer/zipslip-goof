@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String newLogin (@CookieValue("token") String token, Model model) {
+    public String newLogin (@CookieValue(value = "token", defaultValue = "") String token, Model model) {
         if (tokenUtil.isLoggedIn(token)) {
             return "redirect:/message";
         }

@@ -27,7 +27,7 @@ public class MessageController {
     TokenUtil tokenUtil;
 
     @GetMapping("/message")
-    public String getMessage (@CookieValue("token") String token, Model model) {
+    public String getMessage (@CookieValue(value = "token", defaultValue = "") String token, Model model) {
         if (!tokenUtil.isLoggedIn(token)) {
             return "redirect:/login";
         }

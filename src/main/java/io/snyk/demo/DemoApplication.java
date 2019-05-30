@@ -1,6 +1,7 @@
 package io.snyk.demo;
 
 import io.snyk.demo.controller.TokenUtil;
+import io.snyk.demo.controller.UploadController;
 import io.snyk.demo.domain.Message;
 import io.snyk.demo.domain.User;
 import io.snyk.demo.repo.MessageRepo;
@@ -9,6 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.io.File;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -25,7 +28,7 @@ public class DemoApplication {
             repository.save(new Message("Admin", "Please be nice :)"));
 
             userRepo.save(new User("foo", "bar", TokenUtil.createNewToken()));
-
+            cleanUploads();
 
             // fetch all items on the grocery list
             System.out.println("Messages found with");
@@ -33,6 +36,15 @@ public class DemoApplication {
             repository.findAll().forEach(System.out::println);
 
         };
+    }
+
+    private void cleanUploads() {
+        File dir = UploadController.publicDir;
+        String[]entries = dir.list();
+        for(String s: entries){
+            File currentFile = new File(dir.getPath(),s);
+            currentFile.delete();
+        }
     }
 
 }

