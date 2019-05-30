@@ -16,7 +16,7 @@
 
 <nav class="nav">
     <a class="nav-link" href="/">Home</a>
-    <a class="nav-link disabled" href="/message">Message</a>
+    <a class="nav-link" href="/message">Message</a>
     <a class="nav-link" href="/upload">Files</a>
     <a class="nav-link" href="about.html">About</a>
     <a class="nav-link" href="/logout">Log out</a>
@@ -29,11 +29,10 @@
 </form>
 
 
-<table>
+<table class="table table-striped">
     <tbody>
     <tr th:action="@{/messages}" th:method="get" th:each="post: ${messages}">
-        <td th:text="'Poster = ' +${post.poster}" />
-        <td th:text="'Message = ' +${post.body}" />
+        <td th:text="${post.poster} + ': ' + ${post.body} " />
     </tr>
     </tbody>
 </table>
